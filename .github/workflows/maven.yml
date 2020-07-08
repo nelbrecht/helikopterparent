@@ -27,4 +27,11 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn -B --show-version package
+      env:
+        NOBAD: true
+    - name: Deploy with Maven
+      run: mvn -B --show-version deploy
+      env:
+        NOBAD: true
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
