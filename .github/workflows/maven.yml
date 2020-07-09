@@ -34,4 +34,4 @@ jobs:
       run: mvn -B --show-version deploy
       env:
         NOBAD: true
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ github.token }}
