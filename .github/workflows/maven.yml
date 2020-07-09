@@ -26,9 +26,9 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
     - name: Effective pom
-      run: mvn -B --show-version help:effective-pom
+      run: mvn -B help:effective-pom
     - name: Effective settings
-      run: mvn -B --show-version help:effective-settings
+      run: mvn -B help:effective-settings
 
   build:
     runs-on: ubuntu-latest
@@ -45,7 +45,7 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
     - name: Build with Maven
-      run: mvn -B --show-version package
+      run: mvn -B package
       env:
         NOBAD: true
 
@@ -65,6 +65,6 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
     - name: Deploy with Maven
-      run: mvn -B --show-version -Dmaven.test.skip=true -Dmaven.main.skip deploy
+      run: mvn -B -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/nelbrecht/buildme -Dmaven.test.skip=true -Dmaven.main.skip deploy
       env:
         GITHUB_TOKEN: ${{ github.token }}
