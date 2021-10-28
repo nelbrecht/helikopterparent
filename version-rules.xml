@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Please move to your ~/.m2 or re-configure the versions plugin,
+     this artifact expects this file in ~/.m2 -->
+<!-- This file has exclusions for version updates that mostly are not
+     legit updates according to the maven versioning semantics,
+     i.e. it excludes updates to "flavors" if they happen to be called
+     alpha or beta or RC and all that. -->
+<ruleset
+    xmlns="http://mojo.codehaus.org/versions-maven-plugin/rule/2.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    comparisonMethod="maven"
+    xsi:schemaLocation="http://mojo.codehaus.org/versions-maven-plugin/rule/2.0.0
+                        https://www.mojohaus.org/versions-maven-plugin/xsd/rule-2.0.0.xsd">
+  <ignoreVersions>
+    <!-- Ignore Alpha, Beta, release candidate and milestone versions: -->
+    <ignoreVersion type="regex">(?i).*Alpha(?:-?\d+)?</ignoreVersion>
+    <ignoreVersion type="regex">(?i).*-alpha\.(?:-?\d+)?</ignoreVersion>
+    <ignoreVersion type="regex">(?i).*a(?:-?\d+)?</ignoreVersion>
+    <ignoreVersion type="regex">(?i).*Beta(?:-?\d+)?</ignoreVersion>
+    <ignoreVersion type="regex">(?i).*-B(?:-?\d+)?</ignoreVersion>
+    <ignoreVersion type="regex">(?i).*b(?:-?\d+)?</ignoreVersion>
+    <ignoreVersion type="regex">(?i).*RC(?:-?\d+)?</ignoreVersion>
+    <ignoreVersion type="regex">(?i).*CR(?:-?\d+)?</ignoreVersion>
+    <ignoreVersion type="regex">(?i).*M(?:-?\d+)?</ignoreVersion>
+    <ignoreVersion type="regex">(?i).*M(?:-?\d+)-eap(?:-?(-\d)+)-?</ignoreVersion>
+    <ignoreVersion type="regex">(?i).*-m\.(?:-?\d+)?</ignoreVersion>
+    <ignoreVersion type="regex">(?i).*-milestone(?:-?\d+)?</ignoreVersion>
+    <ignoreVersion type="regex">(?i).*\.pr(?:-?\d+)?</ignoreVersion>
+  </ignoreVersions>
+  <rules>
+    <rule groupId="commons-collections">
+      <ignoreVersions>
+        <ignoreVersion type="regex">200[34].*</ignoreVersion>
+      </ignoreVersions>
+    </rule>
+    <rule groupId="commons-io">
+      <ignoreVersions>
+        <ignoreVersion type="regex">200[34].*</ignoreVersion>
+      </ignoreVersions>
+    </rule>
+    <rule groupId="antlr">
+      <ignoreVersions>
+        <ignoreVersion type="regex">200[34].*</ignoreVersion>
+      </ignoreVersions>
+    </rule>
+    <rule groupId="org.postgresql">
+      <ignoreVersions>
+        <ignoreVersion type="regex">.*\.jre[67]</ignoreVersion>
+      </ignoreVersions>
+    </rule>
+    <rule groupId="org.jvnet.jaxb2_commons">
+      <ignoreVersions>
+        <ignoreVersion>1.11.1</ignoreVersion>
+        <ignoreVersion>1.11.1-PUBLISHED-BY-MISTAKE</ignoreVersion>
+      </ignoreVersions>
+    </rule>
+    <rule groupId="org.apache.logging.log4j">
+      <ignoreVersions>
+        <ignoreVersion>2.12.0</ignoreVersion>
+        <ignoreVersion>2.12.1</ignoreVersion>
+        <ignoreVersion>2.13.0</ignoreVersion>
+      </ignoreVersions>
+    </rule>
+    <rule groupId="org.jooq">
+      <ignoreVersions>
+        <ignoreVersion>3.12.0</ignoreVersion>
+        <ignoreVersion>3.12.1</ignoreVersion>
+        <ignoreVersion>3.12.2</ignoreVersion>
+        <ignoreVersion>3.12.3</ignoreVersion>
+      </ignoreVersions>
+    </rule>
+    <rule groupId="org.springframework.boot" artifactId="spring-boot-dependencies">
+      <ignoreVersions>
+        <ignoreVersion>2.2.0.RELEASE</ignoreVersion>
+        <ignoreVersion>2.2.1.RELEASE</ignoreVersion>
+        <ignoreVersion>2.2.2.RELEASE</ignoreVersion>
+        <ignoreVersion>2.2.3.RELEASE</ignoreVersion>
+      </ignoreVersions>
+    </rule>
+  </rules>
+</ruleset>
