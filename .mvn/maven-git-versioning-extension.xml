@@ -1,14 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<gitVersioning>
-  <branch>
-    <pattern>.*</pattern>
-    <versionFormat>${branch}-SNAPSHOT</versionFormat>
-  </branch>
-  <tag>
-    <pattern>v([0-9].*)</pattern>
-    <versionFormat>${1}</versionFormat>
-  </tag>
-  <commit>
-    <versionFormat>${commit}</versionFormat>
-  </commit>
-</gitVersioning>
+<configuration
+    xmlns="https://github.com/qoomon/maven-git-versioning-extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://github.com/qoomon/maven-git-versioning-extension
+                        https://qoomon.github.io/maven-git-versioning-extension/configuration-7.0.0.xsd">
+
+    <updatePom>false</updatePom>
+    <describeTagPattern>v.+</describeTagPattern>
+
+    <refs considerTagsOnBranches="true">
+        <ref type="branch">
+            <pattern>.+</pattern>
+            <version>${ref}${dirty.snapshot}</version>
+            <properties>
+                <foo>${ref}</foo>
+            </properties>
+        </ref>
+
+        <!-- Annotated tags (!) of the format v1.2.3 mark regular
+             releases: -->
+        <ref type="tag">
+            <pattern><![CDATA[v(?<version>.*)]]></pattern>
+            <version>${ref.version}</version>
+        </ref>
+    </refs>
+
+    <!-- optional fallback configuration in case of no matching ref configuration-->
+    <rev>
+        <!-- <version>${describe}${dirty.snapshot}</version> -->
+        <version>${commit}</version>
+    </rev>
+
+</configuration>
