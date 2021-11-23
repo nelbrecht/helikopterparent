@@ -23,6 +23,11 @@ jobs:
         run: |
          cat <(echo -e "${{ secrets.OSSRH_GPG_SECRET_KEY }}") | gpg --batch --import
          gpg --list-secret-keys --keyid-format LONG
+      - name: Verify the build
+        run: mvn -B verify
+        env:
+          NOBAD: true
+          MAVEN_GPG_PASSPHRASE: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSPHRASE }}
       - name: Publish to the Maven Central Repository
         run: mvn -B -Dmaven.test.skip=true -Dmaven.main.skip deploy
         env:
@@ -34,13 +39,3 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
-      - id: install-secret-key
-        name: Install gpg secret key
-        run: |
-         cat <(echo -e "${{ secrets.OSSRH_GPG_SECRET_KEY }}") | gpg --batch --import
-         gpg --list-secret-keys --keyid-format LONG
-      - name: Publish to GitHub Packages
-        run: mvn -B -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/nelbrecht/helikopterparent -Dmaven.test.skip=true -Dmaven.main.skip deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          MAVEN_GPG_PASSPHRASE: ${{ secrets.OSSRH_GPG_SECRET_KEY_PASSPHRASE }}
