@@ -30,7 +30,7 @@ jobs:
       run: mvn -B package
       env:
         NOBAD: true
-    - name: Deploy with Maven
-      run: mvn -B -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/nelbrecht/buildme -Dmaven.test.skip=true -Dmaven.main.skip deploy
+    - name: Maven deploy to Github
+      run: mvn -B -DaltDeploymentRepository=github::default::https://maven.pkg.github.com/nelbrecht/helikopterparent -Dmaven.test.skip=true -Dmaven.main.skip deploy
       env:
         GITHUB_TOKEN: ${{ github.token }}

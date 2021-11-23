@@ -1,5 +1,5 @@
 
-package internal.nelbrecht.buildme;
+package de.planlibre.helikopterparent;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;

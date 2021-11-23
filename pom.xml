@@ -2,33 +2,37 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>internal.nelbrecht</groupId>
-  <artifactId>buildme</artifactId>
+  <groupId>de.planlibre</groupId>
+  <artifactId>helikopterparent</artifactId>
   <version>SOME-SNAPSHOT</version>
   <packaging>pom</packaging>
 
-  <name>buildme</name>
+  <name>Helikopter Parent</name>
   <description>
     A demo for build, deployment to the Central Repository via OSSRH
     and some convenience mvn cruft when used as a parent pom.
   </description>
-  <url>https://github.com/nelbrecht/buildme</url>
+  <url>https://github.com/nelbrecht/helikopterparent</url>
   <licenses>
     <license>
-      <name>The Apache Software License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <name>BSD 3-Clause License</name>
+      <url>https://raw.githubusercontent.com/nelbrecht/helikopterparent/master/LICENSE</url>
+      <distribution>repo</distribution>
+      <comments>License is as offerd by github</comments>
     </license>
   </licenses>
   <developers>
     <developer>
       <name>Norbert Elbrecht</name>
-      <email>github.20.elbrecht@spamgourmet.com</email>
+      <email>4git.20.elbrecht@planlibre.de</email>
+      <!-- <organization>simpligility technologies inc.</organization> -->
+      <!-- <organizationUrl>http://www.simpligility.com</organizationUrl> -->
     </developer>
   </developers>
   <scm>
-    <connection>scm:git:ssh://git@github.com:nelbrecht/buildme.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com:nelbrecht/buildme.git</developerConnection>
-    <url>https://github.com/nelbrecht/buildme</url>
+      <connection>scm:git:ssh://git@github.com:nelbrecht/helikopterparent.git</connection>
+      <developerConnection>scm:git:ssh://git@github.com:nelbrecht/helikopterparent.git</developerConnection>
+      <url>https://github.com/nelbrecht/helikopterparent</url>
   </scm>
 
   <distributionManagement>
@@ -110,8 +114,7 @@
             <verbose>false</verbose>
             <dateFormat>yyyy-MM-dd'T'HH:mm:ssZ</dateFormat>
             <generateGitPropertiesFile>true</generateGitPropertiesFile>
-            <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties
-            </generateGitPropertiesFilename>
+            <generateGitPropertiesFilename>${project.build.outputDirectory}/git.properties</generateGitPropertiesFilename>
           </configuration>
         </plugin>
         <plugin>
@@ -194,6 +197,7 @@
               <id>effective-pom</id>
               <configuration>
                 <output>${project.build.directory}/effective.pom.xml</output>
+                <verbose>true</verbose>
               </configuration>
               <phase>validate</phase>
               <goals>
