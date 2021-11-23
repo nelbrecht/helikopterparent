@@ -38,11 +38,13 @@
   <distributionManagement>
     <snapshotRepository>
       <id>ossrh</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <name>Central Repository OSSRH</name>
+      <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
     </snapshotRepository>
     <repository>
       <id>ossrh</id>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+      <name>Central Repository OSSRH</name>
+      <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
     </repository>
   </distributionManagement>
 
@@ -258,6 +260,10 @@
               <goals>
                 <goal>sign</goal>
               </goals>
+              <configuration>
+                <keyname>B8350ABFE13AB1A016774AC5F7FA65D6633DD3EA</keyname>
+                <passphrase>${env.MAVEN_GPG_PASSPHRASE}</passphrase>
+              </configuration>
             </execution>
           </executions>
         </plugin>
