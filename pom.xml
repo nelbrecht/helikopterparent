@@ -25,8 +25,8 @@
     <developer>
       <name>Norbert Elbrecht</name>
       <email>4git.20.elbrecht@planlibre.de</email>
-      <!-- <organization>simpligility technologies inc.</organization> -->
-      <!-- <organizationUrl>http://www.simpligility.com</organizationUrl> -->
+      <organization>Plan Libre software architecture movement</organization>
+      <organizationUrl>https://www.planlibre.de/</organizationUrl>
     </developer>
   </developers>
   <scm>
@@ -52,8 +52,9 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>11</maven.compiler.release>
     <maven.minimum.version>3.6.3</maven.minimum.version>
+    <skip-maven-gpg-plugin>false</skip-maven-gpg-plugin>
 
-    <junit.jupiter.version>5.8.1</junit.jupiter.version>
+    <junit.jupiter.version>5.8.2</junit.jupiter.version>
 
     <maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
     <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
@@ -261,6 +262,7 @@
                 <goal>sign</goal>
               </goals>
               <configuration>
+                <skip>${skip-maven-gpg-plugin}</skip>
                 <keyname>B8350ABFE13AB1A016774AC5F7FA65D6633DD3EA</keyname>
                 <passphrase>${env.MAVEN_GPG_PASSPHRASE}</passphrase>
               </configuration>
@@ -351,7 +353,6 @@
               <execution>
                 <id>dependency-tree-compile</id>
                 <configuration>
-                  <!--scope>compile</scope -->
                   <appendOutput>true</appendOutput>
                   <outputFile>${project.build.directory}/dependency-tree</outputFile>
                 </configuration>
