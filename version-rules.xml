@@ -77,5 +77,11 @@
         <ignoreVersion>2.2.3.RELEASE</ignoreVersion>
       </ignoreVersions>
     </rule>
+    <rule groupId="org.apache.logging.log4j">
+      <ignoreVersions>
+        <ignoreVersion type="regex">2\.[0-9]\..*</ignoreVersion>
+        <ignoreVersion type="regex">2\.1[0-4]\..*</ignoreVersion>
+      </ignoreVersions>
+    </rule>
   </rules>
 </ruleset>

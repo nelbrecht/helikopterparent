@@ -190,6 +190,24 @@
                 </rules>
               </configuration>
             </execution>
+            <execution>
+              <id>ban-log4j-versions</id>
+              <!-- CVE-2021-44228 -->
+              <phase>validate</phase>
+              <goals>
+                <goal>enforce</goal>
+              </goals>
+              <configuration>
+                <rules>
+                  <bannedDependencies>
+                    <excludes>
+                      <exclude>org.apache.logging.log4j:log4j-core:[2.0-beta9,2.15.0)</exclude>
+                    </excludes>
+                  </bannedDependencies>
+                </rules>
+                <fail>true</fail>
+              </configuration>
+            </execution>
           </executions>
         </plugin>
         <plugin>
