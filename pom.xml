@@ -18,7 +18,7 @@
       <name>BSD 3-Clause License</name>
       <url>https://raw.githubusercontent.com/nelbrecht/helikopterparent/master/LICENSE</url>
       <distribution>repo</distribution>
-      <comments>License is as offerd by github</comments>
+      <comments>License is as offered by github</comments>
     </license>
   </licenses>
   <developers>
@@ -30,9 +30,9 @@
     </developer>
   </developers>
   <scm>
-      <connection>scm:git:ssh://git@github.com:nelbrecht/helikopterparent.git</connection>
-      <developerConnection>scm:git:ssh://git@github.com:nelbrecht/helikopterparent.git</developerConnection>
-      <url>https://github.com/nelbrecht/helikopterparent</url>
+    <connection>scm:git:ssh://git@github.com:nelbrecht/helikopterparent.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com:nelbrecht/helikopterparent.git</developerConnection>
+    <url>https://github.com/nelbrecht/helikopterparent</url>
   </scm>
 
   <distributionManagement>
@@ -201,7 +201,9 @@
                 <rules>
                   <bannedDependencies>
                     <excludes>
-                      <exclude>org.apache.logging.log4j:log4j-core:[2.0-beta9,2.15.0)</exclude>
+                      <exclude>org.apache.logging.log4j:log4j-core:[2.0-beta9,2.3.2)</exclude>
+                      <exclude>org.apache.logging.log4j:log4j-core:[2.4.0,2.12.4)</exclude>
+                      <exclude>org.apache.logging.log4j:log4j-core:[2.13.0,2.17.1)</exclude>
                     </excludes>
                   </bannedDependencies>
                 </rules>
@@ -398,6 +400,7 @@
         </site>
       </distributionManagement>
     </profile>
+
     <profile>
       <id>plugin-snapshots</id>
       <properties>
@@ -416,26 +419,26 @@
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-dependency-plugin</artifactId>
               <version>${maven-dependency-plugin.version}</version>
-            <executions>
-              <execution>
-                <id>dependency-tree-compile</id>
-                <configuration>
-                  <appendOutput>true</appendOutput>
-                  <outputFile>${project.build.directory}/dependency-tree</outputFile>
-                </configuration>
-                <phase>validate</phase>
-                <goals>
-                  <goal>tree</goal>
-                </goals>
-              </execution>
-            </executions>
-            <dependencies>
-              <dependency>
-                <groupId>commons-collections</groupId>
-                <artifactId>commons-collections</artifactId>
-                <version>${commons-collections.version}</version>
-              </dependency>
-            </dependencies>
+              <executions>
+                <execution>
+                  <id>dependency-tree-compile</id>
+                  <configuration>
+                    <appendOutput>true</appendOutput>
+                    <outputFile>${project.build.directory}/dependency-tree</outputFile>
+                  </configuration>
+                  <phase>validate</phase>
+                  <goals>
+                    <goal>tree</goal>
+                  </goals>
+                </execution>
+              </executions>
+              <dependencies>
+                <dependency>
+                  <groupId>commons-collections</groupId>
+                  <artifactId>commons-collections</artifactId>
+                  <version>${commons-collections.version}</version>
+                </dependency>
+              </dependencies>
             </plugin>
           </plugins>
         </pluginManagement>
