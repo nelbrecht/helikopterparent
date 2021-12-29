@@ -328,6 +328,9 @@
                 <goals>
                   <goal>display-dependency-updates</goal>
                 </goals>
+                <configuration>
+                  <outputFile>${project.build.directory}/dependency-updates</outputFile>
+                </configuration>
               </execution>
               <execution>
                 <id>display-property-updates</id>
@@ -335,6 +338,9 @@
                 <goals>
                   <goal>display-property-updates</goal>
                 </goals>
+                <configuration>
+                  <outputFile>${project.build.directory}/property-updates</outputFile>
+                </configuration>
               </execution>
               <execution>
                 <id>display-plugin-updates</id>
@@ -342,6 +348,9 @@
                 <goals>
                   <goal>display-plugin-updates</goal>
                 </goals>
+                <configuration>
+                  <outputFile>${project.build.directory}/plugin-updates</outputFile>
+                </configuration>
               </execution>
             </executions>
             <inherited>true</inherited>
@@ -426,6 +435,84 @@
                   <version>${commons-collections.version}</version>
                 </dependency>
               </dependencies>
+            </plugin>
+          </plugins>
+        </pluginManagement>
+      </build>
+    </profile>
+
+    <profile>
+      <id>analyze</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <duplicate-finder-maven-plugin.version>1.5.0</duplicate-finder-maven-plugin.version>
+      </properties>
+      <build>
+        <pluginManagement>
+          <plugins>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-dependency-plugin</artifactId>
+              <!-- docs at https://github.com/basepom/duplicate-finder-maven-plugin/wiki -->
+              <executions>
+                <execution>
+                  <id>dependency-tree-compile</id>
+                  <configuration>
+                    <appendOutput>true</appendOutput>
+                    <outputFile>${project.build.directory}/dependency-tree</outputFile>
+                  </configuration>
+                  <phase>validate</phase>
+                  <goals>
+                    <goal>tree</goal>
+                  </goals>
+                </execution>
+              </executions>
+              <dependencies>
+                <dependency>
+                  <groupId>commons-collections</groupId>
+                  <artifactId>commons-collections</artifactId>
+                  <version>${commons-collections.version}</version>
+                </dependency>
+              </dependencies>
+            </plugin>
+            <plugin>
+              <groupId>org.basepom.maven</groupId>
+              <artifactId>duplicate-finder-maven-plugin</artifactId>
+              <version>${duplicate-finder-maven-plugin.version}</version>
+              <executions>
+                <execution>
+                  <id>default</id>
+                  <phase>verify</phase>
+                  <goals>
+                    <goal>check</goal>
+                  </goals>
+                </execution>
+              </executions>
+              <configuration>
+                <printEqualFiles>false</printEqualFiles>
+                <failBuildInCaseOfDifferentContentConflict>false</failBuildInCaseOfDifferentContentConflict>
+                <failBuildInCaseOfEqualContentConflict>false</failBuildInCaseOfEqualContentConflict>
+                <failBuildInCaseOfConflict>false</failBuildInCaseOfConflict>
+                <checkCompileClasspath>true</checkCompileClasspath>
+                <checkRuntimeClasspath>true</checkRuntimeClasspath>
+                <checkTestClasspath>true</checkTestClasspath>
+                <skip>false</skip>
+                <quiet>false</quiet>
+                <preferLocal>true</preferLocal>
+                <useResultFile>true</useResultFile>
+                <resultFileMinClasspathCount>2</resultFileMinClasspathCount>
+                <resultFile>${project.build.directory}/duplicate-finder-result.xml</resultFile>
+                <includeBootClasspath>false</includeBootClasspath>
+                <bootClasspathProperty>sun.boot.class.path</bootClasspathProperty>
+                <includePomProjects>false</includePomProjects>
+                <useDefaultResourceIgnoreList>true</useDefaultResourceIgnoreList>
+                <ignoredDependencies>
+                  <dependency>
+                  </dependency>
+                </ignoredDependencies>
+              </configuration>
             </plugin>
           </plugins>
         </pluginManagement>
