@@ -89,5 +89,10 @@
         <ignoreVersion type="regex">2\.17\.0</ignoreVersion>
       </ignoreVersions>
     </rule>
+    <rule groupId="org.webjars" artifactId="bootstrap-datetimepicker">
+      <ignoreVersions>
+        <ignoreVersion>6aa746736d</ignoreVersion>
+      </ignoreVersions>
+    </rule>
   </rules>
 </ruleset>
