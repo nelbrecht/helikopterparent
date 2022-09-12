@@ -336,6 +336,7 @@
             <artifactId>versions-maven-plugin</artifactId>
             <configuration combine.children="append">
               <rulesUri>file://${user.home}/.m2/version-rules.xml</rulesUri>
+              <outputEncoding>UTF-8</outputEncoding>
             </configuration>
             <executions>
               <execution>
