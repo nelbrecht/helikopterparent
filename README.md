@@ -33,3 +33,10 @@ then updates them all and you can take or ditch them with e.g. git
 commands.
 
 GPG signing can be skipped with `-Dskip-maven-gpg-plugin=true`
+
+## Maintenance
+
+After facing issues with a local m2 repo that insisted on being
+up-to-date, updating versions herein is probably best done with an
+empty repo. There is a setting in .mvn/maven.config just do something
+like `rm -rf .m2 && mvn -Pmanage-updates versions:update-properties`.
