@@ -127,6 +127,11 @@
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>${maven-dependency-plugin.version}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-install-plugin</artifactId>
           <version>${maven-install-plugin.version}</version>
         </plugin>
@@ -392,7 +397,6 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-dependency-plugin</artifactId>
-            <version>${maven-dependency-plugin.version}</version>
             <executions>
               <execution>
                 <id>dependency-tree-compile</id>
@@ -422,50 +426,6 @@
           <url>${site.url}</url>
         </site>
       </distributionManagement>
-    </profile>
-
-    <profile>
-      <id>plugin-snapshots</id>
-      <properties>
-        <maven-dependency-plugin.version>3.2.1-SNAPSHOT</maven-dependency-plugin.version>
-      </properties>
-      <pluginRepositories>
-        <pluginRepository>
-          <id>apache.snapshots</id>
-          <url>https://repository.apache.org/snapshots/</url>
-        </pluginRepository>
-      </pluginRepositories>
-      <build>
-        <pluginManagement>
-          <plugins>
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-dependency-plugin</artifactId>
-              <version>${maven-dependency-plugin.version}</version>
-              <executions>
-                <execution>
-                  <id>dependency-tree-compile</id>
-                  <configuration>
-                    <appendOutput>true</appendOutput>
-                    <outputFile>${project.build.directory}/dependency-tree</outputFile>
-                  </configuration>
-                  <phase>validate</phase>
-                  <goals>
-                    <goal>tree</goal>
-                  </goals>
-                </execution>
-              </executions>
-              <dependencies>
-                <dependency>
-                  <groupId>commons-collections</groupId>
-                  <artifactId>commons-collections</artifactId>
-                  <version>${commons-collections.version}</version>
-                </dependency>
-              </dependencies>
-            </plugin>
-          </plugins>
-        </pluginManagement>
-      </build>
     </profile>
 
     <profile>
