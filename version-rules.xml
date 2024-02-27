@@ -95,5 +95,10 @@
         <ignoreVersion>6aa746736d</ignoreVersion>
       </ignoreVersions>
     </rule>
+    <rule groupId="com.amazonaws" artifactId="amazon-kinesis-producer">
+        <ignoreVersions>
+            <ignoreVersion>0.15.9</ignoreVersion>
+        </ignoreVersions>
+    </rule>
   </rules>
 </ruleset>
