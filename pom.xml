@@ -440,6 +440,33 @@
         <pluginManagement>
           <plugins>
             <plugin>
+              <!-- be pragmatic with javadoc and render @todo: -->
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-javadoc-plugin</artifactId>
+              <configuration>
+                <skip>false</skip>
+                <show>protected</show>
+                <additionalparam>-Xdoclint:all -Xdoclint:-missing</additionalparam>
+                <additionalOptions>-Xdoclint:all -Xdoclint:-missing</additionalOptions>
+                <additionalJOptions>
+                  <additionalJOption>-Xdoclint:all</additionalJOption>
+                  <additionalJOption>-Xdoclint:-missing</additionalJOption>
+                </additionalJOptions>
+                <tags>
+                  <tag>
+                    <name>todo</name>
+                    <placement>a</placement>
+                    <head>To do something:</head>
+                  </tag>
+                  <tag>
+                    <name>debt</name>
+                    <placement>a</placement>
+                    <head>Technical debt, reason:</head>
+                  </tag>
+                </tags>
+              </configuration>
+            </plugin>
+            <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-dependency-plugin</artifactId>
               <!-- docs at https://github.com/basepom/duplicate-finder-maven-plugin/wiki -->
