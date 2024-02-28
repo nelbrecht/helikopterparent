@@ -37,9 +37,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>8</maven.compiler.source>
-    <maven.compiler.target>8</maven.compiler.target>
-    <maven.minimum.java.version>1.8</maven.minimum.java.version>
+    <maven.minimum.java.version>17</maven.minimum.java.version>
+    <maven.compiler.release>21</maven.compiler.release>
     <maven.minimum.version>3.6.3</maven.minimum.version>
 
     <maven-clean-plugin.version>3.3.2</maven-clean-plugin.version>
@@ -434,7 +433,7 @@
         <activeByDefault>false</activeByDefault>
       </activation>
       <properties>
-        <duplicate-finder-maven-plugin.version>1.5.1</duplicate-finder-maven-plugin.version>
+        <duplicate-finder-maven-plugin.version>2.0.1</duplicate-finder-maven-plugin.version>
       </properties>
       <build>
         <pluginManagement>
