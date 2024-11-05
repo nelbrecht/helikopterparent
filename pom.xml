@@ -531,6 +531,59 @@
         </pluginManagement>
       </build>
     </profile>
+    <profile>
+      <id>rewrite</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <rewrite-maven-plugin.version>5.42.2</rewrite-maven-plugin.version>
+        <rewrite-migrate-java.version>2.27.1</rewrite-migrate-java.version>
+        <rewrite-spring.version>5.20.0</rewrite-spring.version>
+        <rewrite-static-analysis.version>1.18.0</rewrite-static-analysis.version>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.openrewrite.maven</groupId>
+            <artifactId>rewrite-maven-plugin</artifactId>
+            <version>${rewrite-maven-plugin.version}</version>
+            <configuration>
+              <activeRecipes>
+                <recipe>org.openrewrite.java.migrate.UseTabsOrSpaces</recipe>
+                <recipe>org.openrewrite.staticanalysis.CodeCleanup</recipe>
+                <recipe>org.openrewrite.java.migrate.Java8toJava11</recipe>
+                <recipe>org.openrewrite.java.migrate.UpgradeToJava17</recipe>
+                <recipe>org.openrewrite.java.dependencies.DependencyVulnerabilityCheck</recipe>
+                <recipe>org.openrewrite.java.dependencies.RelocatedDependencyCheck</recipe>
+              </activeRecipes>
+              <!--<recipeArtifactCoordinates>org.openrewrite.recipe:rewrite-static-analysis:RELEASE</recipeArtifactCoordinates>-->
+              <activeStyles>
+                <style>ep.av.shotlist.NoTabsNoStarImports</style>
+              </activeStyles>
+              <failOnDryRunResults>true</failOnDryRunResults>
+            </configuration>
+            <dependencies>
+              <dependency>
+                <groupId>org.openrewrite.recipe</groupId>
+                <artifactId>rewrite-static-analysis</artifactId>
+                <version>${rewrite-static-analysis.version}</version>
+              </dependency>
+              <dependency>
+                <groupId>org.openrewrite.recipe</groupId>
+                <artifactId>rewrite-migrate-java</artifactId>
+                <version>${rewrite-migrate-java.version}</version>
+              </dependency>
+              <dependency>
+                <groupId>org.openrewrite.recipe</groupId>
+                <artifactId>rewrite-spring</artifactId>
+                <version>${rewrite-spring.version}</version>
+              </dependency>
+            </dependencies>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
   </profiles>
 </project>
 <!--
