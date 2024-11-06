@@ -40,3 +40,17 @@ After facing issues with a local m2 repo that insisted on being
 up-to-date, updating versions herein is probably best done with an
 empty repo. There is a setting in .mvn/maven.config just do something
 like `rm -rf .m2 && mvn -Pmanage-updates versions:update-properties`.
+
+### other useful commands
+
+Get the full list of profiles `mvn help:all-profiles`, enable all
+of them as far as possible, so all the calls show the full info.
+
+Resolve plugins to check for some deps of plugins, too. But I am
+unsure if this will definitely give all transitive dependencies, too:
+
+`mvn -Pmanage-updates,analyze,rewrite dependency:resolve-plugins`
+
+If in doubt, watch the m2 directory. By that I could verify that there
+is no plugin dependency of commons-collections prior to 3.2.2 from the
+plugins, as that shows what was actually downloaded to run any plugin.
