@@ -39,7 +39,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.minimum.java.version>17</maven.minimum.java.version>
     <maven.compiler.release>21</maven.compiler.release>
-    <maven.minimum.version>3.6.3</maven.minimum.version>
+    <maven.minimum.version>3.6.4</maven.minimum.version>
 
     <git-commit-id-maven-plugin.version>9.0.1</git-commit-id-maven-plugin.version>
     <maven-clean-plugin.version>3.3.2</maven-clean-plugin.version>
