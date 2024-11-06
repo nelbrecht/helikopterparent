@@ -61,8 +61,6 @@
     <enforcer.fail>true</enforcer.fail>
     <site.url>file:///${basedir}/target/sitedeployment</site.url>
     <siteUrl>${site.url}</siteUrl><!-- workaround for the fact that Velocity Templates cannot reference properties with dots in their name -->
-
-    <commons-collections.version>3.2.2</commons-collections.version> <!-- patched v3 for plugins -->
   </properties>
 
   <build>
@@ -176,13 +174,6 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
           <version>${maven-site-plugin.version}</version>
-          <dependencies>
-            <dependency>
-              <groupId>commons-collections</groupId>
-              <artifactId>commons-collections</artifactId>
-              <version>${commons-collections.version}</version>
-            </dependency>
-          </dependencies>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
@@ -263,13 +254,6 @@
             </execution>
           </executions>
           <inherited>true</inherited>
-          <dependencies>
-            <dependency>
-              <groupId>commons-collections</groupId>
-              <artifactId>commons-collections</artifactId>
-              <version>${commons-collections.version}</version>
-            </dependency>
-          </dependencies>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -420,11 +404,6 @@
             <inherited>true</inherited>
             <dependencies>
               <dependency>
-                <groupId>commons-collections</groupId>
-                <artifactId>commons-collections</artifactId>
-                <version>${commons-collections.version}</version>
-              </dependency>
-              <dependency>
                 <groupId>me.qoomon</groupId>
                 <artifactId>maven-git-versioning-extension</artifactId>
                 <version>${maven-git-versioning-extension.version}</version>
@@ -447,13 +426,6 @@
                 </goals>
               </execution>
             </executions>
-            <dependencies>
-              <dependency>
-                <groupId>commons-collections</groupId>
-                <artifactId>commons-collections</artifactId>
-                <version>${commons-collections.version}</version>
-              </dependency>
-            </dependencies>
           </plugin>
         </plugins>
       </build>
@@ -520,13 +492,6 @@
                   </goals>
                 </execution>
               </executions>
-              <dependencies>
-                <dependency>
-                  <groupId>commons-collections</groupId>
-                  <artifactId>commons-collections</artifactId>
-                  <version>${commons-collections.version}</version>
-                </dependency>
-              </dependencies>
             </plugin>
             <plugin>
               <groupId>org.basepom.maven</groupId>
