@@ -27,6 +27,7 @@
     <ignoreVersion type="regex">(?i).*-m\.(?:-?\d+)?</ignoreVersion>
     <ignoreVersion type="regex">(?i).*-milestone(?:-?\d+)?</ignoreVersion>
     <ignoreVersion type="regex">(?i).*\.pr(?:-?\d+)?</ignoreVersion>
+    <ignoreVersion type="regex">(?i).*\.pre(?:-?\d+)?</ignoreVersion>
   </ignoreVersions>
   <rules>
     <rule groupId="commons-collections">
